@@ -1,11 +1,19 @@
 const nomePetshop = "PETSHOP";
-var moment = require('moment'); // require
-const dadosPet = require('./dadosPet.json');
+const moment = require('moment'); // require
+const fs = require('fs');
+let dadosPets = fs.readFileSync('./dadosPets.json');
 
-let pets = dadosPet.pets;
+let dados = JSON.parse(dadosPets);
+
+const attDados = () => {
+    let petsAtt = JSON.stringify(dados, null, 2);
+
+    fs.writeFileSync('dadosPets.json', petsAtt, 'utf-8');
+};
 
 const listarPets = () => {
-    for(let pet of pets){
+    attDados();
+    for(let pet of dados.pets){
         console.log(`O nome do pet é ${pet.nome}, Idade: ${pet.idade}, Tipo: ${pet.tipo}, Raça: ${pet.raca}, Serviços: `);
 
         for (const servico of pet.servicos) {
@@ -15,7 +23,7 @@ const listarPets = () => {
 };
 
 const vacinarPet = (petNome) => {
-    let pet = pets.find(findPet => findPet.nome == petNome);
+    let pet = dados.pets.find(findPet => findPet.nome == petNome);
 
     if(pet.vacinado == false){
         pet.vacinado = true;
@@ -24,37 +32,40 @@ const vacinarPet = (petNome) => {
     else{
          console.log(`Ops, ${pet.nome} já está vacinado!`);
     };
+    attDados();
 };
 
 const campanhaVacina = () => {
     let qtVacinados = 0;
-    for(let pet of pets){
+    for(let pet of dados.pets){
         if(pet.vacinado == false){
             pet.vacinado = true;
             qtVacinados ++;
         };
     };
-    console.log(`${qtVacinados} pets foram vacinados nessa campanha!`);
+    console.log(`${qtVacinados} dados.pets foram vacinados nessa campanha!`);
 };
 
 const adicionarPet = () => {
-    let pet =
+    let novoPet =
         {
             nome: 'Bolt',
             tipo: 'Cachorro',
             idade: 10,
-            raca: 'Bolt',
+            raca: 'Kryptoniano',
             peso: 2,
             tutor: 'Ângelo',
             contato: '(81) 11111-1111',
             vacinado: false  
         };
 
-    pets.push(pet);
+    dados.pets.push(novoPet);
+    attDados();
+    console.log(`${novoPet.nome} foi adicionado com sucesso!`);
 };
 
 const darBanhoPet = (petNome) => {
-    let pet = pets.find(findPet => findPet.nome == petNome);
+    let pet = dados.pets.find(findPet => findPet.nome == petNome);
 
     pet.servicos.push({
         tipoServ: 'banho',
@@ -65,7 +76,7 @@ const darBanhoPet = (petNome) => {
 };
 
 const tosarPet = (petNome) => {
-    let pet = pets.find(findPet => findPet.nome == petNome);
+    let pet = dados.pets.find(findPet => findPet.nome == petNome);
 
     pet.servicos.push({
         tipoServ: 'tosa',
@@ -76,7 +87,7 @@ const tosarPet = (petNome) => {
 };
 
 const apararUnhasPet = (petNome) => {
-    let pet = pets.find(findPet => findPet.nome == petNome);
+    let pet = dados.pets.find(findPet => findPet.nome == petNome);
 
     pet.servicos.push({ 
         tipoServ: 'corte de unhas',
@@ -84,7 +95,8 @@ const apararUnhasPet = (petNome) => {
     });
    
     console.log(`${pet.nome} está de unhas aparadas!`); 
-}
+};
 
-apararUnhasPet(petNome = 'Snoop');
-listarPets();
+//apararUnhasPet(petNome = 'Snoop');
+//listarPets();
+//adicionarPet();
