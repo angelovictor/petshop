@@ -1,0 +1,57 @@
+{
+  "pets": [
+    {
+      "nome": "Costelinha",
+      "tipo": "Cachorro",
+      "idade": 5,
+      "raca": "Vira-lata",
+      "peso": 3,
+      "tuor": "Doug",
+      "contato": "(81) 11111-1111",
+      "vacinado": true,
+      "servicos": []
+    },
+    {
+      "nome": "Snoop",
+      "tipo": "Cachorro",
+      "idade": 5,
+      "raca": "Vira-lata",
+      "peso": 3,
+      "tuor": "Doug",
+      "contato": "(81) 11111-1111",
+      "vacinado": false,
+      "servicos": []
+    },
+    {
+      "nome": "Garfield",
+      "tipo": "Gato",
+      "idade": 5,
+      "raca": "Vira-lata",
+      "peso": 3,
+      "tuor": "Doug",
+      "contato": "(81) 11111-1111",
+      "vacinado": false,
+      "servicos": []
+    },
+    {
+      "nome": "Krypto",
+      "tipo": "Cachorro",
+      "idade": 10,
+      "raca": "Kryptoniano",
+      "peso": 2,
+      "tutor": "Clark",
+      "contato": "(81) 11111-1111",
+      "vacinado": false
+    },
+    {
+      "nome": "Bolt",
+      "tipo": "Cachorro",
+      "idade": 10,
+      "raca": "Kryptoniano",
+      "peso": 2,
+      "tutor": "Ângelo",
+      "contato": "(81) 11111-1111",
+      "vacinado": true
+    }
+  ]
+}
